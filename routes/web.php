@@ -19,14 +19,7 @@ use Inertia\Inertia;
 
 Route::get('/', [NewsController::class, 'index']);
 
-Route::get('/welcome', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::post('/news', [NewsController::class, 'store']);
 
 
 Route::get('/dashboard', function () {
