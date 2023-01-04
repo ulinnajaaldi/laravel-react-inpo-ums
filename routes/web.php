@@ -19,8 +19,15 @@ use Inertia\Inertia;
 
 Route::get('/', [NewsController::class, 'index']);
 
-Route::post('/news', [NewsController::class, 'store']);
+Route::post('/news', [NewsController::class, 'store'])->middleware(['auth', 'verified'])->name('create.news');
 
+Route::get('/news', [NewsController::class, 'show'])->middleware(['auth', 'verified'])->name('my.news');
+
+Route::get('/news/edit', [NewsController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit.news');
+
+Route::post('/news/update', [NewsController::class, 'update'])->middleware(['auth', 'verified'])->name('update.news');
+
+Route::post('/news/delete', [NewsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete.news');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
