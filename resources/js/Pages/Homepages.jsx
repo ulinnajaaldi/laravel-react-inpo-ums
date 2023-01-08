@@ -9,8 +9,8 @@ export default function Homepages(props) {
         <div>
             <Navbar user={props.auth.user} />
             <Head title={props.title} />
-            <div className="flex items-center justify-center">
-                <div className=" grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="flex items-center justify-center px-10">
+                <div className=" grid grid-cols-1 gap-5">
                     <Card news={props.news.data} />
                 </div>
             </div>
