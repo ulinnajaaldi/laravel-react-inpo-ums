@@ -6,6 +6,7 @@ use App\Http\Resources\NewsCollection;
 use Inertia\Inertia;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -16,10 +17,10 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = new NewsCollection(News::OrderByDesc('id')->paginate(8));
+        $news = new NewsCollection(News::OrderByDesc('id')->paginate(15));
         return Inertia::render('Homepages', [
-            'title' => 'Cuy Universer Home',
-            'description' => 'Selamat datang di News Cuy Universe',
+            'title' => 'Inpo UMS',
+            'description' => 'Selamat datang di Inpo UMS',
             'news' => $news,
 
         ]);
@@ -48,6 +49,7 @@ class NewsController extends Controller
         $news->description = $request->description;
         $news->category = $request->category;
         $news->author = auth()->user()->email;
+        $news->author = auth()->user()->name;
         $news->save();
         return redirect()->back()->with('message', 'berita berhasil dibuat');
     }
