@@ -23,6 +23,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "daisyui": "^2.46.1"
+        "daisyui": "^2.46.1",
+        "react-icons": "^4.7.1"
     }
 }
