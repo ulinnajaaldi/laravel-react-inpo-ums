@@ -31,20 +31,12 @@ export default function Dashboard(props) {
     }, []);
 
     return (
-        <AuthenticatedLayout
-            auth={props.auth}
-            errors={props.errors}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Dashboard
-                </h2>
-            }
-        >
+        <AuthenticatedLayout auth={props.auth} errors={props.errors}>
             <Head title="Dashboard" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="bg-base-100 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="flex flex-col gap-4 m-10">
                             {!notif ? (
                                 <h1>Masukan Berita</h1>
@@ -71,7 +63,7 @@ export default function Dashboard(props) {
                             <input
                                 type="text"
                                 placeholder="Title"
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full bg-neutral-content text-accent-content"
                                 onChange={(title) =>
                                     setTitle(title.target.value)
                                 }
@@ -80,7 +72,7 @@ export default function Dashboard(props) {
                             <input
                                 type="text"
                                 placeholder="Description"
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full bg-neutral-content text-accent-content"
                                 onChange={(description) =>
                                     setDescription(description.target.value)
                                 }
@@ -89,25 +81,27 @@ export default function Dashboard(props) {
                             <input
                                 type="text"
                                 placeholder="Category"
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full bg-neutral-content text-accent-content"
                                 onChange={(category) =>
                                     setCategory(category.target.value)
                                 }
                                 value={category}
                             />
                             <button
-                                className="btn"
+                                className="btn btn-accent"
                                 onClick={() => handleSubmit()}
                             >
                                 Submit
                             </button>
                         </div>
+                    </div>
+                    <div className="flex flex-col gap-4 mt-4">
                         {props.myNews && props.myNews.length > 0 ? (
                             props.myNews.map((news, index) => (
                                 <CardAuth
                                     key={index}
                                     title={news.title}
-                                    description={news.category}
+                                    description={news.description}
                                     category={news.category}
                                     dataEdit={{ id: news.id }}
                                     dataDelete={{ id: news.id }}
