@@ -4,9 +4,8 @@ export default function Card({ news }) {
     const isNews = (news) => {
         return news.map((data, index) => {
             return (
-                // const category = news.category.split(" ");
                 <div className="" key={index}>
-                    <div className="flex gap-4 border shadow-md p-4 rounded-xl bg-base-100">
+                    <div className="flex gap-4 border border-base-300 shadow-md p-4 rounded-xl bg-base-100">
                         <div className="btn-disabled w-10 h-10 rounded-full flex items-center justify-center bg-accent-focus text-white mt-1">
                             {(
                                 data.author.split("@")[0].charAt(0) +

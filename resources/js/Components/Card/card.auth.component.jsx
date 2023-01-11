@@ -5,7 +5,7 @@ export default function CardAuth(props) {
     const category = props.category.split(" ");
 
     return (
-        <div className="flex items-center justify-between gap-4 border shadow-md p-4 rounded-xl">
+        <div className="flex items-center justify-between gap-4 border shadow-md p-4 rounded-xl bg-base-100 border-base-300">
             <div className="flex flex-col w-[800px] ">
                 <div className="flex gap-2 items-center">
                     <h2 className="font-bold text-lg">{props.title}</h2>
