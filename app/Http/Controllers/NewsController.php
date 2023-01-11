@@ -17,7 +17,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = new NewsCollection(News::OrderByDesc('id')->paginate(15));
+        $news = new NewsCollection(News::OrderByDesc('id')->paginate(25));
         return Inertia::render('Homepages', [
             'title' => 'Inpo UMS',
             'description' => 'Selamat datang di Inpo UMS',
@@ -49,7 +49,6 @@ class NewsController extends Controller
         $news->description = $request->description;
         $news->category = $request->category;
         $news->author = auth()->user()->email;
-        $news->author = auth()->user()->name;
         $news->save();
         return redirect()->back()->with('message', 'berita berhasil dibuat');
     }
