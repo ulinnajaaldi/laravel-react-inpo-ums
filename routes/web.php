@@ -29,6 +29,10 @@ Route::post('/news/update', [NewsController::class, 'update'])->middleware(['aut
 
 Route::post('/news/delete', [NewsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete.news');
 
+Route::get('/about', function () {
+    return Inertia::render('About');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
