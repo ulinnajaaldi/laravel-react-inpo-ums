@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "@/Components/Navbar/navbar.component";
 import { Head } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
+import { Link } from "@inertiajs/inertia-react";
 
 export default function EditNews(props) {
     const [title, setTitle] = useState("");
@@ -22,11 +23,21 @@ export default function EditNews(props) {
     };
 
     return (
-        <div>
+        <div className="flex">
+            <Head title={"Edit News"} />
             <Navbar user={props.auth.user} />
-            <Head title={props.title} />
-            <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div className="flex flex-col gap-4 m-10">
+            <div className="bg-base-200 w-full overflow-hidden sm:rounded-lg">
+                <div className="text-sm breadcrumbs p-10">
+                    <ul>
+                        <li>
+                            <Link href={route("dashboard")}>Dashboard</Link>
+                        </li>
+                        <li>News</li>
+                        <li>Edit</li>
+                    </ul>
+                </div>
+                <div className="flex flex-col gap-4 m-10 shadow-sm  ">
+                    <h1>Edit Berita</h1>
                     <input
                         type="text"
                         placeholder="Title"
@@ -52,7 +63,10 @@ export default function EditNews(props) {
                         }
                         defaultValue={props.myNews.category}
                     />
-                    <button className="btn" onClick={() => handleSubmit()}>
+                    <button
+                        className="btn btn-warning"
+                        onClick={() => handleSubmit()}
+                    >
                         Update
                     </button>
                 </div>
